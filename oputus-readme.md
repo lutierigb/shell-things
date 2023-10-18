@@ -101,8 +101,27 @@ A notification will be sent once the symbol has switched to the new symbol as pe
 
 Note: Checking **Notifications from the local terminal/trade server** will send a message every time an order is placed, modified, closed. I found this "spammy".
 
+#### New Symbol Detected
+
+If a symbol(case-sensitive) is specified in **Notify when new symbol becomes available**, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
 
 
+
+### Other Stuff
+
+#### Stop buying after closing all positions
+
+Offer a simple way to place further orders once the current ones are closed. It's useful if you'd like to pause placing orders as soon as the current ones are closed. Has been used in the past to allow withdraws from the account and also to rotate to a different symbol.
+
+#### Authorization code
+
+The EA requires an authorization code to be loaded on a chart. One code is required per metatrader installation.
+
+Authorization code is not needed when performing backtesting.
+
+#### Info Panel type
+
+Selects how the info panel in the chart will be plotted. It can be turned off, in text mode or graphical mode. This setting controls the info panel used during backtests as well. Note: Graphical mode will slow down progress of ticks in visual mode. If you'd like to speed up the ticks in visual mode either choose Text or turn it off completely if not needed.
 
 ### Investing Profiles
 
@@ -181,6 +200,3 @@ Investing profiles can be used to set lot sizes, take profit, gradient buy  and 
 - A hedging account is assumed for this EA to work appropriately 
 - If you change the average take profit it will be modified on all existing orders in a matter of seconds after the change. There is no need for a new order to be placed for the TP to be recalculated and modified.
 - Most of the information in the info panel will be updated every 5 seconds
-
-
-
