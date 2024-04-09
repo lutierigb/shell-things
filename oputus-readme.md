@@ -1,45 +1,104 @@
 # oputus-trading-robot
 
-## Basics
+## Introduction
 
 An EA based on Sistema Manche from investor Douglas Niemeyer. Only used for long positions and tested in indexes such as Bra50, SPY and NASDAQ
 
-## Features
+Settting all parameters to their defaults (right-click - Defaults) will make it act like the regular Manche EA where the lot sizes are static and no other fancy features are enabled
 
-### Limits
+## Basics
 
-Used to limit the number of open positions at any given time. Value of zero effectively disable this feature. You can limit based on the number of lots, number of open positions or both. Whatever happens first will block further buys.
+- Parameter **Enable buy operations* when set to false allows you to keep the robot running but won't place any new orders.
 
-Note: I wouldn't recommend the use of this feature as the strategy seems to benefit from being allowed to continue to buy during market downfalls.
+- Parameter **EA Name** allows you to specify a name for this Expert Advisor/Robot. It will be used when placing orders in the comments field and also when sending push notifications. Useful if you have more than one EA running on the same account but not required.
 
-### Reinvesting
+- Parameter **Magic Number** sets the Magic Number for orders. This EA will only "touch" and manage orders with matching EA Number. Orders placed manually will be ignored by Oputus. If you are running multiple EAs in the same account/same MT they should have different Magic Numbers to ensure they are handled accordingly.
 
-Calculates lot size based on the current balance and Investment profile. An investment profile must be selected to use this option. Can be done either daily or Monthly. It also calculates the lot sizes used in Gradient Buy, in case the feature is on. 
+- Parameter **Timeframe** sets the timeframe for the EA to operate. Note: if **Auto Timeframe** is enabled it will get the timeframes to operate from the **Auto Timeframe** settings and this option will only set the chart to be displayed in the timeframe of your choosing. 
 
-Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it would recalculate the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. 
+- Parameter **Percentage of the balance to use for lot size calculations** It allows the use of a given percentage of the account balance(less or more) when calculating lot size(mainly when using investing profiles and/or reinvesting). For example, in an account with a $10k balance, if the new setting is set to 90, when using investing profiles, lot sizes will be calculated based on $9k(90% of 10k) instead of the actual account balance. Note: the actual balance used for lot size calculations is rounded down to the closest $100. So considering an account with balance of $9999, and the new setting set to 90, the actual balance to be used in the calculation will be as follows: 9999 * 90% = 8999.1 rounding it down it will result in 8900. 8900 will then be used when calculating lot sizes. This is done to avoid fractions of lot sizes.
 
-Notification note: This feature sends push notifications. See *Notifications* below.
+## Nice Features
 
-### Symbol Rotation
+### Investing Profiles
 
+Investing profiles can be used to set lot sizes, take profit, gradient buy and Auto Timeframe settings.
 
-EA will switch from the current symbol, assumed to be something like Bra50XXXYY to a new symbol X days before the current symbol expires. It will try to rotate to the new symbol every new day if there are no positions opened. Otherwise it will be postponed until all the positions are closed. It will only switch on a 
+Lot sizes will be calculated according to the profile select, on the account balance and the value specified in the  **Percentage of the balance to use for lot size calculations** parameter.
 
-Note: Currently, the chart won't be reloaded to the new symbol once the rotation has been done. Meaning that while it will be operating on the new symbol, the chart won't match the positions and won't show profits. It will operate normally on the new symbol but things will look strange in the chart. It's recommended to load a new chart window with the new symbol. This can be done at any time, even with positions opened.
+Once a Investing Profile is selected in the **Investing Profile. Calculates lots and take profits for you** parameter, you must select which feature(s) should get their settings from the profile.
+Whenever you see a parameter called **Use below settings from the investment profile:** you can set it to **true** to get the setting from the Investing Profile instead of what you see in the inputs.
 
-Notification note: This feature sends push notifications. See *Notifications* below.
+Note: These profiles have been backtested extensively and it's recommended to set all the  **Use below settings from the investment profile:**  parameters in the Robot to **true** for better results.
+
+On the current version the profiles have the following settings:
+
+|Low Risk|  |
+|--------|--|
+| Base balance: | $10k |
+|||
+| Basics - Take Profit(in points) used when placing new order| 5 |
+| Basics - Take Profit(in points) when average price is calculated: | 60 |
+| Basics - Buy orders size(in contract): | 0.6 |
+|||
+|Gradient Buy - Level One Trigger: | 8 |
+| Gradient Buy - Level One Lot Size: | 0.8 |
+| Gradient Buy - Level Two Trigger: | 10 |
+| Gradient Buy - Level Two Lot Size: | 1.2 |
+|||
+| Auto Timeframe - Auto Timeframe enabled: | False |
+| Auto Timeframe - Timeframe to start with: | NA |
+| Auto Timeframe - Open Positions Threshold: | NA |
+| Auto Timeframe - New timeframe: | NA |
+
+|Medium Risk|  |
+|--------|--|
+| Base balance: | $10k |
+|||
+| Basics - Take Profit(in points) used when placing new order| 5 |
+| Basics - Take Profit(in points) when average price is calculated: | 120 |
+| Basics - Buy orders size(in contract): | 1 |
+|||
+|Gradient Buy - Level One Trigger: | 7 |
+| Gradient Buy - Level One Lot Size: | 1.4 |
+| Gradient Buy - Level Two Trigger: | 10 |
+| Gradient Buy - Level Two Lot Size: | 1.6 |
+|||
+| Auto Timeframe - Auto Timeframe enabled: | True |
+| Auto Timeframe - Timeframe to start with: | M3 |
+| Auto Timeframe - Open Positions Threshold: | 1 |
+| Auto Timeframe - New timeframe: | M5 |
+
+|High Risk|  |
+|--------|--|
+| Base balance: | $10k |
+|||
+| Basics - Take Profit(in points) used when placing new order| 5 |
+| Basics - Take Profit(in points) when average price is calculated: | 120 |
+| Basics - Buy orders size(in contract): | 1.5 |
+|||
+| Dynamic Take Profit - Level One Open buys threshold: | 10 |
+| Dynamic Take Profit - Level One Take Profit: | 200 |
+| Dynamic Take Profit - Level Two Open buys threshold: | 2100 |
+| Dynamic Take Profit - Level Two Take Profit: | 200 |
+|||
+| Auto Timeframe - Auto Timeframe enabled: | True |
+| Auto Timeframe - Timeframe to start with: | M3 |
+| Auto Timeframe - Open Positions Threshold: | 1 |
+| Auto Timeframe - New timeframe: | M5 |
+
 
 ### Dynamic Take Profit
 
-Allows to set different Take Profit levels depending on the number of opened positions. This only applies when the average price is applied.
+Allows to set different Take Profit levels depending on the current conditions. This only applies when the average price is applied.
 
-For example: Let's assume *Take Profit(in points) when average price is calculated* is set to 50, *Level One Open buys threshold* is set to 10 and *Level One Take Profit* is set to 100. In this scenario, if the number of open buys is equal to or less than 10, it will use 50 points as the Take Profit on top of the average price. If another buy order would occur, now with 11 open buys positions, take profit of 100 would be used.
+When enabled it will check current price to determine whether it should use **Level One Take Profit** or **Level Two Take Profit**. If the current price is below the previous day's low, the take profit when using average price will be **Level One Take Profit** otherwise **Level Two Take Profit**. The moment the current price falls below the previous day's low it will apply **Level One Take Profit** to all open orders.
 
-If you do not wish to use this feature set *Level One Open buys threshold* to zero.
+This feature is opportunistic and will only use a higher TP (**Level Two Take Profit**) if the price is still climbing compared to the previous day's low. All backtests concluded it does not increase the Equity Drawdown Maximum(DD) further than previous seen levels. Neither it increases the occurrences of DD's greater than 15%. It should be fairly safe to use and should result in bigger profits.
 
-Note 1: *Level Two Open buys threshold* must be greater than *Level One Open buys threshold*. If you do not intend to use the second level you can set it to a very high, unlikely number of open positions like 10000 or simply set it to greater than *Level One Open buys threshold* and specify *Level Two Take Profit*  to be the same as *Level One Take Profit*
+A moving average can also be used to only allow **Level Two Take Profit** to be applied when the current price is above the average. Default to 9 days for the MA period.
 
-Note 2: Take profit is just an arbitrary integer number. It could be anything you want, including negative numbers(which usually results in little to no profit)
+Note: This feature is NOT currently part of any investing profiles.
 
 ### Gradient Buys
 
@@ -47,13 +106,39 @@ Allow the EA to change the lot size based on the number of current open position
 
 If you do not wish to use this feature set *Level One Trigger.* to zero.
 
-### Auto TMF
+There is also a second level which can be used as follows: Continuing with the example above, you could set **Level Two Trigger** to 15 and **Level Two Lot Size** to 2.4. Therefore after buying 15 times it will start placing new orders using lot size 2.4. 
 
-It's a feature to adjust the timeframe of the chart and lot size based on the number of open positions.
+You can also configure the setting to be retrieved from the Investing Profile.
 
-....
+### Auto Timeframe
+
+Allows to adjust the timeframe of the chart based on the number of open positions. You select the initial timeframe in the **Timeframe to start with** and set the number of positions before in changes to the new timeframe.
 
 Upon closing of all opened positions the timeframe will change to the initial time frame set in the parameters.
+
+### Reinvesting
+
+Calculates lot size based on the current balance and Investment profile. An investment profile must be selected to use this option. Can be done either daily, Monthly or ASAP. It also calculates the lot sizes used in Gradient Buy, in case the feature is on. 
+
+Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with a $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it recalculates the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. 
+
+Notification note: This feature sends push notifications. See *Notifications* below.
+
+### Limits
+
+Used to limit the number of open positions at any given time. Value of zero effectively disables this feature. You can limit based on the number of lots, number of open positions or both. Whatever happens first will block further buys.
+
+Note: I wouldn't personally recommend the use of this feature as the Manche strategy seems to benefit from being allowed to continue to buy during market downfalls.
+
+
+### Symbol Rotation
+
+EA will switch from the current symbol, assumed to be something like Bra50XXXYY to a new symbol X days before the current symbol expires. It will try to rotate to the new symbol every new day if there are no positions opened. Otherwise it will be postponed until all the positions are closed.
+
+The chart will be reloaded to use the new symbol once the rotation is completed. 
+
+Notification note: This feature sends push notifications. See *Notifications* below.
+
 
 ### Flow Control
 
@@ -67,7 +152,7 @@ Note: This feature seems to work best with larger lot sizes and it will protect 
 
 ### Notifications
 
-These are push notification that requires the **Meta Trader 5** app on your phone. In order to set it up in the MT5 on your desktop select Tools - Options - Notifications tab. Check **Enable Push notifications**, enter the **MetaQuotes ID** from the App in the appropriate field and hit **Test**.
+These are push notification that requires the **Meta Trader 5** app on your phone. In order to set it up, in the MT5 in your VM select Tools - Options - Notifications tab. Check **Enable Push notifications**, enter the **MetaQuotes ID** from the App in the appropriate field and hit **Test**.
 
 Note: I highly recommend you enable this feature as it will give you good insight into the EA.
 
@@ -105,13 +190,11 @@ Note: Checking **Notifications from the local terminal/trade server** will send 
 
 If a symbol(case-sensitive) is specified in **Notify when new symbol becomes available**, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
 
-
-
 ### Other Stuff
 
 #### Stop buying after closing all positions
 
-Offer a simple way to place further orders once the current ones are closed. It's useful if you'd like to pause placing orders as soon as the current ones are closed. Has been used in the past to allow withdraws from the account and also to rotate to a different symbol.
+Offer a simple way to prevent further orders once the current ones are closed. It's useful if you'd like to pause placing orders as soon as the current ones are closed. Has been used in the past to allow withdrawals from the account and also to rotate to a different symbol.
 
 #### Authorization code
 
@@ -123,80 +206,12 @@ Authorization code is not needed when performing backtesting.
 
 Selects how the info panel in the chart will be plotted. It can be turned off, in text mode or graphical mode. This setting controls the info panel used during backtests as well. Note: Graphical mode will slow down progress of ticks in visual mode. If you'd like to speed up the ticks in visual mode either choose Text or turn it off completely if not needed.
 
-### Investing Profiles
+#### Comments in the chart
 
-Investing profiles can be used to set lot sizes, take profit, gradient buy  and Auto Timeframe setting.  On the current version the profiles have the following settings:
+Specifies the maximum number of comment lines to keep on the chart. The most recent X lines will be kept.
 
-|Low Risk|  |
-|--------|--|
-| Base balance: | $10k |
-|||
-| Basics - Take Profit(in points) used when placing new order| 5 |
-| Basics - Take Profit(in points) when average price is calculated: | 60 |
-| Basics - Buy orders size(in contract): | 0.6 |
-|||
-|Gradient Buy - Level One Trigger: | 7 |
-| Gradient Buy - Level One Lot Size: | 0.8 |
-| Gradient Buy - Level Two Trigger: | 10 |
-| Gradient Buy - Level Two Lot Size: | 1.2 |
-|||
-| Dynamic Take Profit - Level One Open buys threshold: | 10 |
-| Dynamic Take Profit - Level One Take Profit: | 100 |
-| Dynamic Take Profit - Level Two Open buys threshold: | 100 |
-| Dynamic Take Profit - Level Two Take Profit: | 100 |
-|||
-| Auto Timeframe - Auto Timeframe enabled: | False |
-| Auto Timeframe - Timeframe to start with: | NA |
-| Auto Timeframe - Open Positions Threshold: | NA |
-| Auto Timeframe - New timeframe: | NA |
 
-|Medium Risk|  |
-|--------|--|
-| Base balance: | $10k |
-|||
-| Basics - Take Profit(in points) used when placing new order| 5 |
-| Basics - Take Profit(in points) when average price is calculated: | 120 |
-| Basics - Buy orders size(in contract): | 1 |
-|||
-|Gradient Buy - Level One Trigger: | 7 |
-| Gradient Buy - Level One Lot Size: | 1.4 |
-| Gradient Buy - Level Two Trigger: | 10 |
-| Gradient Buy - Level Two Lot Size: | 1.6 |
-|||
-| Dynamic Take Profit - Level One Open buys threshold: | 10 |
-| Dynamic Take Profit - Level One Take Profit: | 100 |
-| Dynamic Take Profit - Level Two Open buys threshold: | 100 |
-| Dynamic Take Profit - Level Two Take Profit: | 100 |
-|||
-| Auto Timeframe - Auto Timeframe enabled: | True |
-| Auto Timeframe - Timeframe to start with: | M3 |
-| Auto Timeframe - Open Positions Threshold: | 1 |
-| Auto Timeframe - New timeframe: | M5 |
-
-|High Risk|  |
-|--------|--|
-| Base balance: | $10k |
-|||
-| Basics - Take Profit(in points) used when placing new order| 5 |
-| Basics - Take Profit(in points) when average price is calculated: | 120 |
-| Basics - Buy orders size(in contract): | 1.5 |
-|||
-|Gradient Buy - Level One Trigger: | 7 |
-| Gradient Buy - Level One Lot Size: | 2 |
-| Gradient Buy - Level Two Trigger: | 10 |
-| Gradient Buy - Level Two Lot Size: | 2.2 |
-|||
-| Dynamic Take Profit - Level One Open buys threshold: | 10 |
-| Dynamic Take Profit - Level One Take Profit: | 200 |
-| Dynamic Take Profit - Level Two Open buys threshold: | 2100 |
-| Dynamic Take Profit - Level Two Take Profit: | 200 |
-|||
-| Auto Timeframe - Auto Timeframe enabled: | True |
-| Auto Timeframe - Timeframe to start with: | M3 |
-| Auto Timeframe - Open Positions Threshold: | 1 |
-| Auto Timeframe - New timeframe: | M5 |
 
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
 - If you change the average take profit it will be modified on all existing orders in a matter of seconds after the change. There is no need for a new order to be placed for the TP to be recalculated and modified.
-- Most of the information in the info panel will be updated every 5 seconds
