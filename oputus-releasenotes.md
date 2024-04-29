@@ -1,0 +1,116 @@
+# Release Notes
+
+## 2024Apr29
+- New versioning format!
+- bug fix: EOD notification had the wrong value for TP. affecting calculations
+- New Feature: EA can now manage positions manually created
+- New Feature: Avg Price can be forced upon start
+
+## 2024040801
+- bug fix: sometimes profits in chart will be printed as $0. should be fixed now but difficult to effetivily test this
+- refactoring: moving info panel code to its own file. Removing trailing spaces in some of the files
+
+## 2024040503
+- New option: Reinvesting now has "ASAP" that will recalculate lots every time all the positions are closed. Existing .set files are compatible with this version
+
+## 2024040502
+- Refactoring: notifications
+
+## 2024040501
+- Cosmetic: improves End of the Day push notification to include estimated profit and distance from TP
+
+## 2024040404
+ - Refactoring: removing old comments from the code
+
+## 2024040403
+ - Refactoring: Global Variable names in the reinvesting code in order to make it less delicate in case there are multiple Oputus' instances in the same MT
+
+## 2024040402
+- Further improvements to detecting a failed symbol rotation
+
+## 2024040401
+- bug fix: Symbol rotation would fail to rotate if the future symbol is not in the Market Watch window. Now the future symbol is added in case it wasn't there already. Requiring no actions from the user
+- bug fix: Symbol rotation would send notification saying the rotation completed when it failed. Fixed.
+
+## 2024032501
+- Added a new input to select what to do once there is only one open buy left. Default has always been to keep it but discussion was raised on the possibility of closing it. There is now an option to keep it as is, close it and close it only if profitable. 
+
+## 2024032201
+- New feature(will affect profit/DD): DTP has graduated to DTP v2. Now DTP is based of previous day price and an optional moving average. Read the docs for more info
+- Cosmetic change: EA Number is now one of the first inputs
+
+## 2024021601
+- Significant change(will affect profit/DD): When using ATF, there could be two consecutive buys when switching timeframes, either at the same price or very close. For example, with the initial timeframe set to M3, it could buy at 13:06, switch to M5 after one buy and place another other at 13:06(because the previous M5 candle also closed below the inferior BB). Fix has been added to avoid this edge case. Now, a new buy will only be allowed at 13:10, in this example
+
+## 2024021101
+- Significant change(will affect profit/DD): Investing profile Low has one of its level one triggered changed from 7 to 8. This allows the low risk profile to pass during the covid 19 market in Feb 2020
+
+## 2024021101
+- removing trading hours check from buy signal. It would just create inconsistent results during BT as it would only trade during symbol trading hours which changed throughout the year. Now it should trade on every tick regardless of the trading hours specified on the symbol
+
+## 2023121001
+- new feature: Due to popular request a new input has been added. Called **Percentage of the balance to use for lot size calculations** it allows to use a given percentage of the account balance(less or more) when calculating lot size(mainly when using investing profiles and/or reinvesting). For example, in an account with $10k balance, if the new setting is set to 90, when using investing profiles, lot sizes will be calculated based on $9k(90% of 10k) instead of the actual account balance. Note: the actual balance used for lot size calculations is rounded down to the closest $100. So considering an account with balance of $9999, and the new setting set to 90, the actual balance to be used in the calculation will be as follows: 9999 * 90% = 8999.1 rounding it down it will result in 8900. 8900 will then be used when calculating lot sizes. This is done to avoid fraction of lot sizes.
+
+## 2023102401
+- bug fix: some global variables would retain their old value when parameters changed in the EA among other things would cause
+the infopanel to show duplicated info. 
+- improvements: moved groups of paremeters around to an order that makes more sense
+
+## 2023102302
+- bug fix: in rare cases(rapid price movement) ATF would switch timeframes quickly and multiple buys per bar would happen
+this fix takes care of that by checking the current bar time with the last buy
+
+## 2023102301
+- improvement: Comments are now rotated.
+
+## 2023102201
+- improvement: SOD and EOD push notifications. ie. include equity in different formats.
+
+## 2023101801
+- improvement: info panel now updates every tick and only the parts that are variable are reloaded. Static parts aren't touched. Should save a few CPU cycles.
+- improvement: current take profit is now easier to understand in the info panel
+- new feature: New input **Info Panel type**, allows to select what kind of info panel will be plotted on the chart. Note: Graphical info panel slows down the ticks when running Strategy Tester in Visual Mode.
+
+## 2023101501
+- improvement: EOD now counts today's ops before sending notification instead of relying on global variable
+
+## 2023101303
+- fix: some profits and ATF messages were not being plotted in the chart
+
+## 2023101302
+improvement: new symbol detection won't check for new symbol if chart's symbol is the one being checked
+
+## 2023101301
+Retransmission threshold is now a parameter/inputs
+
+## 2023101001
+- increases the retransmission rate from 3% to 5% to avoid unnecessary notifications
+- changes default value of parameter **# of days before expiration to start rotation** in Symbol Rotation from 5 to 10
+
+## 2023100801
+- New Feature: Capable of detecting and notifying when a new symbol is available
+
+## 2023100601
+- re-words Start of Day notification
+- small changes to symbol rotation routine including new pre-change message and post-change message
+
+## 2023100502
+- adds equity to end of day notification
+- bug fix: symbol rotation silently failed to reload chart on new symbol
+
+## 2023100501
+
+- Adds info panel in visual mode
+
+## 2023100301
+
+- Updating investing profiles.
+
+
+## 20230926
+
+- Includes de EA Name in the push notifications
+
+## 2023092103
+
+- Adds support to Auto Timeframe from investing profiles. Now, investing profiles can control ATF
