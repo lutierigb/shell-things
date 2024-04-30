@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2024040801
+Current version: 2024Apr29
 
 ## Introduction
 
@@ -10,15 +10,15 @@ Settting all parameters to their defaults (right-click - Defaults) will make it 
 
 ## Basics
 
-- Parameter **Enable buy operations* when set to false allows you to keep the robot running but won't place any new orders.
+- Parameter `Enable buy operations` when set to **False** allows you to keep the robot running but won't place any new orders.
 
-- Parameter **EA Name** allows you to specify a name for this Expert Advisor/Robot. It will be used when placing orders in the comments field and also when sending push notifications. Useful if you have more than one EA running on the same account but not required.
+- Parameter `EA Name` allows you to specify a name for this Expert Advisor/Robot. It will be used when placing orders in the comments field and also when sending push notifications. Useful if you have more than one EA running on the same account but not required.
 
-- Parameter **Magic Number** sets the Magic Number for orders. This EA will only "touch" and manage orders with matching EA Number. Orders placed manually will be ignored by Oputus. If you are running multiple EAs in the same account/same MT they should have different Magic Numbers to ensure they are handled accordingly.
+- Parameter `Magic Number` sets the Magic Number for orders. This EA will only "touch"/manage orders with matching EA Number. Orders placed manually will be ignored by Oputus. If you are running multiple EAs in the same account/same MT they SHOULD have different Magic Numbers to ensure they are handled accordingly.
 
-- Parameter **Timeframe** sets the timeframe for the EA to operate. Note: if **Auto Timeframe** is enabled it will get the timeframes to operate from the **Auto Timeframe** settings and this option will only set the chart to be displayed in the timeframe of your choosing. 
+- Parameter `Timeframe` sets the timeframe for the EA to operate. Note: if `Auto Timeframe` is enabled it will get the timeframes to operate from the `Auto Timeframe` settings and this option will only set the chart to be displayed in the timeframe of your choosing. 
 
-- Parameter **Percentage of the balance to use for lot size calculations** It allows the use of a given percentage of the account balance(less or more) when calculating lot size(mainly when using investing profiles and/or reinvesting). For example, in an account with a $10k balance, if the new setting is set to 90, when using investing profiles, lot sizes will be calculated based on $9k(90% of 10k) instead of the actual account balance. Note: the actual balance used for lot size calculations is rounded down to the closest $100. So considering an account with balance of $9999, and the new setting set to 90, the actual balance to be used in the calculation will be as follows: 9999 * 90% = 8999.1 rounding it down it will result in 8900. 8900 will then be used when calculating lot sizes. This is done to avoid fractions of lot sizes.
+- Parameter `Percentage of the balance to use for lot size calculations` It allows the use of a given percentage of the account balance(less or more) when calculating lot size(mainly when using investing profiles and/or reinvesting). For example, in an account with a $10k balance, if the new setting is set to 90, when using investing profiles, lot sizes will be calculated based on $9k(90% of $10k) instead of the actual account balance. Note: the actual balance used for lot size calculations is rounded down to the closest $100. So considering an account with balance of $9999, and the new setting set to 90, the actual balance to be used in the calculation will be as follows: 9999 * 90% = 8999.1 rounding it down it will result in 8900. 8900 will then be used when calculating lot sizes. This is done to avoid fractions of lot sizes.
 
 ## Nice Features
 
@@ -26,12 +26,12 @@ Settting all parameters to their defaults (right-click - Defaults) will make it 
 
 Investing profiles can be used to set lot sizes, take profit, gradient buy and Auto Timeframe settings.
 
-Lot sizes will be calculated according to the profile select, on the account balance and the value specified in the  **Percentage of the balance to use for lot size calculations** parameter.
+Lot sizes will be calculated according to the profile select, on the account balance and the value specified in the `Percentage of the balance to use for lot size calculations` parameter.
 
-Once a Investing Profile is selected in the **Investing Profile. Calculates lots and take profits for you** parameter, you must select which feature(s) should get their settings from the profile.
-Whenever you see a parameter called **Use below settings from the investment profile:** you can set it to **true** to get the setting from the Investing Profile instead of what you see in the inputs.
+Once a Investing Profile is selected in the `Investing Profile. Calculates lots and take profits for you` parameter, you must select which feature(s) should get their settings from the profile.
+Whenever you see a parameter called `Use below settings from the investment profile:` you can set it to **True** to get the setting from the Investing Profile instead of what you see in the inputs.
 
-Note: These profiles have been backtested extensively and it's recommended to set all the  **Use below settings from the investment profile:**  parameters in the Robot to **true** for better results.
+Note: These profiles have been backtested extensively and it's recommended to set all the  `Use below settings from the investment profile:`  parameters in the EA to **True** for better results.
 
 On the current version the profiles have the following settings:
 
@@ -94,27 +94,27 @@ On the current version the profiles have the following settings:
 
 Allows to set different Take Profit levels depending on the current conditions. This only applies when the average price is applied.
 
-When enabled it will check current price to determine whether it should use **Level One Take Profit** or **Level Two Take Profit**. If the current price is below the previous day's low, the take profit when using average price will be **Level One Take Profit** otherwise **Level Two Take Profit**. The moment the current price falls below the previous day's low it will apply **Level One Take Profit** to all open orders.
+When enabled it will check current price to determine whether it should use `Level One Take Profit` or `Level Two Take Profit`. If the current price is below the previous day's low, the take profit when using average price will be `Level One Take Profit` otherwise `Level Two Take Profit`. The moment the current price falls below the previous day's low it will apply `Level One Take Profit` to all open orders.
 
-This feature is opportunistic and will only use a higher TP (**Level Two Take Profit**) if the price is still climbing compared to the previous day's low. All backtests concluded it does not increase the Equity Drawdown Maximum(DD) further than previous seen levels. Neither it increases the occurrences of DD's greater than 15%. It should be fairly safe to use and should result in bigger profits.
+This feature is opportunistic and will only use a higher TP (`Level Two Take Profit`) if the price is still climbing compared to the previous day's low. All backtests concluded it does not increase the Equity Drawdown Maximum(DD) further than previous seen levels. Neither it increases the occurrences of DD's greater than 15%. It should be fairly safe to use and should result in bigger profits.
 
-A moving average can also be used to only allow **Level Two Take Profit** to be applied when the current price is above the average. Default to 9 days for the MA period.
+A moving average can also be used to only allow `Level Two Take Profit` to be applied when the current price is above the average. Default to 9 days for the MA period.
 
 Note: This feature is NOT currently part of any investing profiles.
 
 ### Gradient Buys
 
-Allow the EA to change the lot size based on the number of current open positions. There are two levels to be configured. You could say something like after 10 open positions the lot size will be 2. Until then the Lot Size in the Basic setting will be used.
+Allows the EA to change the lot size based on the number of current open positions. There are two levels to be configured. You could say something like after 10 open positions the lot size will be 2. Until then the `Buy orders size(in contract)` in the Basic setting will be used.
 
-If you do not wish to use this feature set *Level One Trigger.* to zero.
+If you do not wish to use this feature set `Level One Trigger` to zero.
 
-There is also a second level which can be used as follows: Continuing with the example above, you could set **Level Two Trigger** to 15 and **Level Two Lot Size** to 2.4. Therefore after buying 15 times it will start placing new orders using lot size 2.4. 
+There is also a second level which can be used as follows: Continuing with the example above, you could set `Level Two Trigger` to 15 and `Level Two Lot Size` to 3. Therefore after buying 15 times it will start placing new orders using lot size 3. 
 
-You can also configure the setting to be retrieved from the Investing Profile.
+Note: You can also configure the setting to be retrieved from the Investing Profile.
 
 ### Auto Timeframe
 
-Allows to adjust the timeframe of the chart based on the number of open positions. You select the initial timeframe in the **Timeframe to start with** and set the number of positions before in changes to the new timeframe.
+Allows to adjust the timeframe of the chart based on the number of open positions. You select the initial timeframe in the `Timeframe to start with` and set the number of positions before in changes to the new timeframe.
 
 Upon closing of all opened positions the timeframe will change to the initial time frame set in the parameters.
 
@@ -122,7 +122,7 @@ Upon closing of all opened positions the timeframe will change to the initial ti
 
 Calculates lot size based on the current balance and Investment profile. An investment profile must be selected to use this option. Can be done either daily, Monthly or ASAP. It also calculates the lot sizes used in Gradient Buy, in case the feature is on. 
 
-Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with a $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it recalculates the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. 
+Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's done to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with a $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it recalculates the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. 
 
 Notification note: This feature sends push notifications. See *Notifications* below.
 
@@ -175,7 +175,7 @@ You will also be notified at the end of the trading session with a summary of th
 
 #### Packet loss level
 
-You will also be notified of high levels of packet loss/retransmission as reported by MT5. Note it doesn't necessarily mean an issue in the connection with the broker as this metrics is retrieved from the OS and includes any connection on the system.
+You will also be notified of high levels of packet loss/retransmission as reported by MT5. Note it doesn't necessarily mean an issue in the connection with the broker as this metrics is retrieved from the OS and includes any connections on the system.
 
 #### Symbol about to expire
 
@@ -190,13 +190,25 @@ Note: Checking **Notifications from the local terminal/trade server** will send 
 
 #### New Symbol Detected
 
-If a symbol(case-sensitive) is specified in **Notify when new symbol becomes available**, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
+If a symbol(case-sensitive) is specified in `Notify when new symbol becomes available`, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
+
+
+### Advanced Trading
+
+**Stop buying after closing all positions** Offer a simple way to prevent further orders once the current ones are closed. It's useful if you'd like to pause placing orders as soon as the current ones are closed. Has been used in the past to allow withdrawals from the account and also to rotate to a different symbol.
+
+Note: If you turn it on when there are no open orders, it will allow orders to be placed but will block further orders once they are closed. 
+
+
+For the options below you usually don't want to change these settings. They exist for very specific use cases. Consult with Oputus Support before changing these settings. 
+
+**Manage EA positions Only** Defaults to **True** which allows Oputus to only touch/manage its own orders. Manually created order via MT or others means won't be considered by this EA. Orders created by other EA with different Magic Numbers will also be ignored when this options is **True**. Setting it to **False** will allow the EA to manage all the buy orders, irrespective of the Magic Number. This will include orders placed manually by the user and orders from any other EAs running in the same account.
+
+**Forces the EA to apply Avg Price as TP** defaults to **False**. By default, the EA will only apply average price + TP in points after the first partial exit(one order has hit its take profit). Setting this option to **True** will force the EA to apply Average Price to all orders. So if the order has each their own TP, when this is set to **False** new TP will be applied to all open orders.
+
+
 
 ### Other Stuff
-
-#### Stop buying after closing all positions
-
-Offer a simple way to prevent further orders once the current ones are closed. It's useful if you'd like to pause placing orders as soon as the current ones are closed. Has been used in the past to allow withdrawals from the account and also to rotate to a different symbol.
 
 #### Authorization code
 
