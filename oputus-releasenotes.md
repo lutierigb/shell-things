@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2024Apr30
+- bug fix: In some cases DTPv2 would fallback to level one upon start
+
 ## 2024Apr29
 - New versioning format!
 - bug fix: EOD notification had the wrong value for TP. affecting calculations
