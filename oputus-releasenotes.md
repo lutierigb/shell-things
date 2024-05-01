@@ -1,5 +1,8 @@
 # Release Notes
 
+## 2024May01
+- Remote control is now a thing! You can place special orders to control the EA. Reads the docs: https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#remote-control
+
 ## 2024Apr30
 - bug fix: In some cases DTPv2 would fallback to level one upon start
 
