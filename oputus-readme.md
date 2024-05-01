@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2024Apr30
+Current version: 2024May01
 
 ## Introduction
 
@@ -151,6 +151,21 @@ With this feature on, a new buy signal will be ignored if the previous order was
 To enable this feature, the parameter `Time-out(in minutes) for new buy orders when FC is on` must be greater than zero.
 
 Note: This feature seems to work best with larger lot sizes and it will protect consecutive buys that could otherwise result in high levels of drawdown. Running this feature with an appropriate lot size will simply delay closing positions.
+
+### Remote Control
+
+Allows to use invalid orders(order wichi will be rejected by the server) to control some aspects of the EA. At the moment there are two commands available. In order to use this feature a Buy at the Market Price order must be placed, of any size, regardless of the Symbol. The Take Profit specified when placing the order will determine which command will be executed.
+
+|Take Profit Value|Command|
+|--------|--|
+|10|Toggle the ability to place new orders|
+|20|Returns a snapshot of the current configuration|
+
+A confirmation of the execution and the outcome will be sent to the user via push notification
+
+You should use the actual values in the table as take profit. Since they are well below the current price they will be rejected by the trading server and won't be executed. 
+
+Note that these commands can also be called when the market is closed.
 
 ### Notifications
 
