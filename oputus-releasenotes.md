@@ -1,5 +1,16 @@
 # Release Notes
 
+## 2024May08
+- bug fix: profits calculation now include positions that have been manually closed
+- refactoring: Current DTP level and source are now global variables updated only when there is a change
+
+## 2024May02
+- Breaking change: Authorization codes algorithm changed. New auth codes will have to be issued. Now the same code will work in multiple MT/accounts as long as they are all part of the same account in the broker
+- bug fix: EOD message would report the wrong number of buys when there was a holiday and the broker didn't update the symbol hours
+
+## 2024May01-01
+- adding weighthed average input. Default is still simple
+
 ## 2024May01
 - Remote control is now a thing! You can place special orders to control the EA. Reads the docs: https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#remote-control
 
