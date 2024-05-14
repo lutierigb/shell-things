@@ -1,12 +1,16 @@
 # oputus-trading-robot
 
-Current version: 2024May01
+Current version: 2024May14
 
 ## Introduction
 
 An EA based on Sistema Manche from investor Douglas Niemeyer. Only used for long positions and tested in indexes such as Bra50, SPY and NASDAQ
 
 Settting all parameters to their defaults (right-click - Defaults) will make it act like the regular Manche EA where the lot sizes are static and no other fancy features are enabled
+
+## Backtests result
+
+Latest version results stored [here](https://docs.google.com/spreadsheets/d/1ZCH_PCN79vFHZcxhS3TRomz4AK8QZQx4uHJLFYZU7lY)
 
 ## Basics
 
