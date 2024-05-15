@@ -1,5 +1,11 @@
 # Release Notes
 
+## 2024May14
+- Investing Profile tweak(will affect profit/DD): Medium risk profile changes average price TP from 120 points to 100.
+- New feature: Dynamic Take Profit is now part of the profiles
+- New feature: Maximum spread allowed for new orders
+- refactoring: removing extreme_risk profile
+
 ## 2024May08
 - bug fix: profits calculation now include positions that have been manually closed
 - refactoring: Current DTP level and source are now global variables updated only when there is a change
