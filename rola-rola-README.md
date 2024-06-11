@@ -32,8 +32,9 @@ All the information is printed on the chart as well as on the Experts tab.
 2. In the Toolbox Panel - Trade tab, right-click any open positions, select Report, then HTML(Internet Explorer)
 3. Open a new chart in MT5, the symbol does not matter
 4. Load the Rola-Rola EA onto the chart
-5. In the Inputs specify the "From" and "To" symbol. Note: Symbol names are case-sensitive. "Bra50Jun28" is an example of a valid name
-6. Hit OK to start the roll-over process
+5. Make sure "Allow Algo Trading" is checked
+6. In the Inputs tab specify the "From" and "To" symbol. Note: Symbol names are case-sensitive. "Bra50Jun28" is an example of a valid name
+7. Hit OK to start the roll-over process
 
 Once the process completes the EA will be removed from the chart.
 
