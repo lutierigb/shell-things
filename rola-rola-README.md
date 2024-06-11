@@ -1,3 +1,5 @@
+**Latest version:** rola-rola2024Jun11.ex5
+
 # Intro to Rola-Rola
 
 Rola-Rola is a one-shot Expert Advisor(EA) created to migrate open positions from one symbol to another. It's usually required when trading with symbols that come with an expiration date
