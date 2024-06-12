@@ -1,5 +1,14 @@
 # Release Notes
 
+## 2024Jun12
+- improvement: Push notifications now includes: deposits/withdraw alerts and notification when X positions are closed. Good for those moments when you are praying. fixed GH issue #8
+
+## 2024Jun10
+- bug fix: MAE was showing zero in the notifications - fixes GH issues #5
+
+## 2024May27
+- Improvements to EOD message and dump config message via remote control
+
 ## 2024May14
 - Investing Profile tweak(will affect profit/DD): Medium risk profile changes average price TP from 120 points to 100.
 - New feature: Dynamic Take Profit is now part of the profiles
