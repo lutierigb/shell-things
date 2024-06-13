@@ -2,6 +2,7 @@
 
 ## 2024Jun13
 - improvement: lot sizes will no longer be recalculated if EA is reloaded and there are positions open. fixed GH issue #3
+- improvement:  Push notifications now includes: EA loaded and removed from a chart
 
 ## 2024Jun12
 - improvement: Push notifications now includes: deposits/withdraw alerts and notification when X positions are closed. Good for those moments when you are praying. fixed GH issue #8
