@@ -1,5 +1,9 @@
 # Release Notes
 
+## 2024Jun14
+- improvements: how lot sizes are recalculated if there are positions open. better version that yesterday's
+- bug fix: EA would recalculate initial lot size if reinvesting was on and retrieve lot size from profile was off
+
 ## 2024Jun13
 - improvement: lot sizes will no longer be recalculated if EA is reloaded and there are positions open. fixed GH issue #3
 - improvement:  Push notifications now includes: EA loaded and removed from a chart
