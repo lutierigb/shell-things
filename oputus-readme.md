@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2024May14
+Current version: 2024Jun25
 
 ## Introduction
 
