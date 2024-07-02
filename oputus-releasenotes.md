@@ -1,5 +1,7 @@
 # Release Notes
 
+## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
+
 ## 2024Jun25
 - improve behavior of Force Avg Price on Init
 
