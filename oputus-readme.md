@@ -12,6 +12,18 @@ Settting all parameters to their defaults (right-click - Defaults) will make it 
 
 Latest version results stored [here](https://docs.google.com/spreadsheets/d/1ZCH_PCN79vFHZcxhS3TRomz4AK8QZQx4uHJLFYZU7lY)
 
+## How to install/upgrade it
+
+1. In Metatrader go to File - Open Data Folder
+2. Navigate to `MQL5\Experts`
+3. Paste the `.ex5` file
+4. Double click the file you just pasted to open it with Metatrader
+5. Drag and Drop it on a new chart window or same window where the current one is loaded
+6. Confirm you want to replace the old one with the new one
+7. Make sure `Allow Algo Trading` is checked
+8. Under **Inputs** load your .set file
+
+   
 ## Basics
 
 - Parameter `Enable buy operations` when set to **False** allows you to keep the robot running but won't place any new orders.
