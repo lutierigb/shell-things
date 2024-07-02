@@ -1,5 +1,20 @@
 # Release Notes
 
+## 2024Jun25
+- improve behavior of Force Avg Price on Init
+
+## 2024Jun16-2
+- bug fux: reinvesting wasn't updated effective long lot GV. Which would cause the EA to load old lot size when reloaded. Does not affect GB lot size
+
+## 2024Jun16
+- New Feature: Lines on the chart representing the start/end of the trading session
+- New Feature: Buy button on the chart will place a market order. Lot size will be determined by the EA depending on the features config, ie. grading buy
+- attempt to fix bug: adding debug info to understand why profit shows as zeros sometimes in the chart
+- bug fix: text on chart won't appear over info panel
+
+## 2024Jun15
+- attempt to fix bug: Increasing window to look for recently closed positions(used to print the profit on the chart)
+
 ## 2024Jun14
 - improvements: how lot sizes are recalculated if there are positions open. better version that yesterday's
 - bug fix: EA would recalculate initial lot size if reinvesting was on and retrieve lot size from profile was off
