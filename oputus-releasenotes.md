@@ -2,6 +2,23 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2024Jul15
+- New Feature: Under Advanced Trading, there is an option to skip the first minutes of the day. 
+Skipping the first 10 minutes for first buys only resolves the issue of medium profile busting the account in Feb 2024 with real ticks 
+
+## 2024Jul12
+- bug fix: BTAllClosePositions was being called in non-BT environemnt. ie EA loaded on a chart 
+- bug fix: Profit Sharing Global Variables were not zeroed out and would contain info from the last report
+
+## 2024Jul9
+- New feature: if there are multiples EA on the same machine even running in different MT instances, the one with the largest Magic Number will send a summary of all the profits from all EAs 
+
+## 2024Jul5
+- only devs care: better BT stats printed to logs
+
+## 2024Jul4
+- only devs care: saving inputs to a file for future reference
+
 ## 2024Jun25
 - improve behavior of Force Avg Price on Init
 
