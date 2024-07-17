@@ -2,9 +2,12 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2024Jul17
+- New Feature: Under Advanced Trading, there is an option to close positions at the end of the day. This feature is unstable at the moment until we move to CTrade and confirm the order execution
+
 ## 2024Jul15
-- New Feature: Under Advanced Trading, there is an option to skip the first minutes of the day. 
-Skipping the first 10 minutes for first buys only resolves the issue of medium profile busting the account in Feb 2024 with real ticks 
+- New Feature: Under Advanced Trading, there is an option to skip the first minutes of the day.
+Skipping the first 10 minutes for first buys only resolves the issue of medium profile busting the account in Feb 2024 with real ticks
 
 ## 2024Jul12
 - bug fix: BTAllClosePositions was being called in non-BT environemnt. ie EA loaded on a chart 
