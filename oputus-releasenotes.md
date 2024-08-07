@@ -2,6 +2,15 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2024Aug07
+- New feature/major overhaul: adding shorting
+- bug fix: back in version 2023101801 the graphical info panel started to slow-down BT in visual mode. This is now fixed.
+- new feature: adds capability of withdrawing part of profits during BTs
+- new feature: option to recalculate short lot size during BT
+
+## 2024Jul17-01
+- Low risk now enforces M5 using auto TMF.
+
 ## 2024Jul17
 - New Feature: Under Advanced Trading, there is an option to close positions at the end of the day. This feature is unstable at the moment until we move to CTrade and confirm the order execution
 
