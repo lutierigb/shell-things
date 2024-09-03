@@ -2,6 +2,10 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2024Sep01
+- bug fix: abruptly terminating the VM caused GVs to not be commited to disk and upon MT restart it would restore from a previous version. this is now fixed
+- bug fix: closing a position manually will now force TP to be recalculated
+
 ## 2024Aug07
 - New feature/major overhaul: adding shorting
 - bug fix: back in version 2023101801 the graphical info panel started to slow-down BT in visual mode. This is now fixed.
