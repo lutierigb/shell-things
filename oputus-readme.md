@@ -256,6 +256,14 @@ Selects how the info panel in the chart will be plotted. It can be turned off, i
 Specifies the maximum number of comment lines to keep on the chart. The most recent X lines will be kept.
 
 
+## FAQ
+
+### I've been asked to collect logs. How do I do this?
+
+In Metatrader go to **File** - **Open Data Folder(Ctrl+Shift+D)**.
+1. Right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+2. Navigate to **MQL5**, right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+3. Send those two zip files to me(Lutieri)
 
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
