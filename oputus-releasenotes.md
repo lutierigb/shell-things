@@ -2,6 +2,25 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2024Nov25
+- Invalid stop errors were seeing because of a bug when calculating minimum TP allowed for short
+
+## 2024Nov14
+- fixing bug in TP matching algo that caused TP line to be added when it wasn't really necessary
+
+## 2024Nov05
+- improves TP matching algo on init. Preventing EA from updating orders on init if not needed. If the current TP on orders matches with the points specified in the EA then there is no need to update the orders. This fixes an edge case when existing positions would be modified upon market opening if the price is above the orders TP
+
+## 2024Oct23
+- new feature: ability to specify lot size for manual operations
+
+## 2024Oct22
+- improvments to symbol rotation. It will no longer be deprecated. Should solve issue where it says the rotation failed but actually completed
+- attempt to fix bug: extending the window forward to look for recently closed positions
+
+## 2024Sep24
+- bug fix: info panel was displaying the wrong current long lot size when GB was on
+
 ## 2024Sep01
 - bug fix: abruptly terminating the VM caused GVs to not be commited to disk and upon MT restart it would restore from a previous version. this is now fixed
 - bug fix: closing a position manually will now force TP to be recalculated
