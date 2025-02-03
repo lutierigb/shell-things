@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2024Sep01
+Current version: 2025Feb03
 
 ## Introduction
 
@@ -8,22 +8,6 @@ An EA based on Sistema Manche from investor Douglas Niemeyer. Only used for long
 
 Settting all parameters to their defaults (right-click - Defaults) will make it act like the regular Manche EA where the lot sizes are static and no other fancy features are enabled
 
-## Backtests result
-
-Latest version results stored [here](https://docs.google.com/spreadsheets/d/1ZCH_PCN79vFHZcxhS3TRomz4AK8QZQx4uHJLFYZU7lY)
-
-## How to install/upgrade it
-
-1. In Metatrader go to File - Open Data Folder
-2. Navigate to `MQL5\Experts`
-3. Paste the `.ex5` file
-4. Double click the file you just pasted to open it with Metatrader
-5. Drag and Drop it on a new chart window or same window where the current one is loaded
-6. Confirm you want to replace the old one with the new one
-7. Make sure `Allow Algo Trading` is checked
-8. Under **Inputs** load your .set file
-
-   
 ## Basics
 
 - Parameter `Enable buy operations` when set to **False** allows you to keep the robot running but won't place any new orders.
@@ -223,6 +207,11 @@ Note: Checking **Notifications from the local terminal/trade server** will send 
 
 If a symbol(case-sensitive) is specified in `Notify when new symbol becomes available`, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
 
+#### New MT Version availabe
+
+This feature will send a push notification when the Metatrader live update tool detects and downloads a new version. The notification will be send only once, when a new version is detected.
+
+Note: this feature requires a one-time setup to work. You basically have to open a Command Prompt(as Administrator) and run a single command that will create a symlink(i.e. mklink /d ...). The exact command depends on your installation path so load the EA and check the **Experts** tab for the exact command. Run it and reload the EA. If everything is right now in the Experts tab you should see **MT Version detection: Setup complete!**
 
 ### Advanced Trading
 
@@ -256,14 +245,6 @@ Selects how the info panel in the chart will be plotted. It can be turned off, i
 Specifies the maximum number of comment lines to keep on the chart. The most recent X lines will be kept.
 
 
-## FAQ
-
-### I've been asked to collect logs. How do I do this?
-
-In Metatrader go to **File** - **Open Data Folder(Ctrl+Shift+D)**.
-1. Right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
-2. Navigate to **MQL5**, right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
-3. Send those two zip files to me(Lutieri)
 
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
