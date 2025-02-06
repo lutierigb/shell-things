@@ -2,6 +2,31 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Feb06
+- Yet more improvements to the new MT version feature
+
+## 2025Feb05
+- Improves(supresses) logging of the new MT version feature detection
+
+## 2025Feb03
+ - New feature: Push notification when a new MT version is detected. Requires one-time setup see [docs](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#new-mt-version-availabe)
+
+## 2025Jan22
+- force TP to be updated when EA is reloaded when changing from simple to weighted average and vice-versa
+- add note to BOD message about stop buying after closing current positions 
+
+## 2024Dec18
+- Adds chart symbol to the notifications header
+- add note about new buys not allowed in BOD message
+- expands remote control to include help and stop buying after closing all (not yet implemented)
+
+## 2024Dec14
+- fixing bug that would use long lot size when pressing the sell button on the chart
+- removing sell/buy buttons during BT
+
+## 2024Nov30
+- fixing bug that would cause short TP to not be updated if the input changed
+
 ## 2024Nov25
 - Invalid stop errors were seeing because of a bug when calculating minimum TP allowed for short
 
@@ -95,13 +120,14 @@ Skipping the first 10 minutes for first buys only resolves the issue of medium p
 ## 2024May08
 - bug fix: profits calculation now include positions that have been manually closed
 - refactoring: Current DTP level and source are now global variables updated only when there is a change
+- new feature: added spread level input. Would only allow buys if spread if below specified level
 
 ## 2024May02
 - Breaking change: Authorization codes algorithm changed. New auth codes will have to be issued. Now the same code will work in multiple MT/accounts as long as they are all part of the same account in the broker
 - bug fix: EOD message would report the wrong number of buys when there was a holiday and the broker didn't update the symbol hours
 
 ## 2024May01-01
-- adding weighthed average input. Default is still simple
+- new feature: adding weighthed average input. Default is still simple
 
 ## 2024May01
 - Remote control is now a thing! You can place special orders to control the EA. Reads the docs: https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#remote-control
