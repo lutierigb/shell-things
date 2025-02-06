@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Feb03
+Current version: 2025Feb06
 
 ## Introduction
 
@@ -209,7 +209,7 @@ If a symbol(case-sensitive) is specified in `Notify when new symbol becomes avai
 
 #### New MT Version availabe
 
-This feature will send a push notification when the Metatrader live update tool detects and downloads a new version. The notification will be send only once, when a new version is detected.
+This feature, which if off by default, will send a push notification when the Metatrader live update tool detects and downloads a new version. The notification will be send only once, when a new version is detected.
 
 Note: this feature requires a one-time setup to work. You basically have to open a Command Prompt(as Administrator) and run a single command that will create a symlink(i.e. mklink /d ...). The exact command depends on your installation path so load the EA and check the **Experts** tab for the exact command. Run it and reload the EA. If everything is right now in the Experts tab you should see **MT Version detection: Setup complete!**
 
