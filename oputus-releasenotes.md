@@ -2,6 +2,16 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Feb21
+- Resolves an old issue with indicators like RSI and BB which could have them pointing to the wrong indicator. Mostly happened when turning ATF On and Off
+
+## 2025Feb19
+- improving logging. Every single log now includes timestamp(in server time) and log level
+- For EA using Bra50 which don't expire, it will no longer send a notification to the user at the beginning of the day
+
+## 2025Feb16
+- tiny improvement to DTP logic ontick
+
 ## 2025Feb06
 - Yet more improvements to the new MT version feature
 
