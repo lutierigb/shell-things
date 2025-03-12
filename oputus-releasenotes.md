@@ -2,6 +2,9 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Mar12
+- Resolves bug that could cause profit sharing to crash the EA at the end of the day
+
 ## 2025Feb21
 - Resolves an old issue with indicators like RSI and BB which could have them pointing to the wrong indicator. Mostly happened when turning ATF On and Off
 
