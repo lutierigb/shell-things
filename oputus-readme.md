@@ -8,6 +8,21 @@ An EA based on Sistema Manche from investor Douglas Niemeyer. Only used for long
 
 Settting all parameters to their defaults (right-click - Defaults) will make it act like the regular Manche EA where the lot sizes are static and no other fancy features are enabled
 
+## Backtests result
+
+Latest version results stored [here](https://docs.google.com/spreadsheets/d/1ZCH_PCN79vFHZcxhS3TRomz4AK8QZQx4uHJLFYZU7lY)
+
+## How to install/upgrade it
+
+1. In Metatrader go to File - Open Data Folder
+2. Navigate to `MQL5\Experts`
+3. Paste the `.ex5` file
+4. Double click the file you just pasted to open it with Metatrader
+5. Drag and Drop it on a new chart window or same window where the current one is loaded
+6. Confirm you want to replace the old one with the new one
+7. Make sure `Allow Algo Trading` is checked
+8. Under **Inputs** load your .set file
+
 ## Basics
 
 - Parameter `Enable buy operations` when set to **False** allows you to keep the robot running but won't place any new orders.
@@ -244,7 +259,14 @@ Selects how the info panel in the chart will be plotted. It can be turned off, i
 
 Specifies the maximum number of comment lines to keep on the chart. The most recent X lines will be kept.
 
+## FAQ
 
+### I've been asked to collect logs. How do I do this?
+
+In Metatrader go to **File** - **Open Data Folder(Ctrl+Shift+D)**.
+1. Right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+2. Navigate to **MQL5**, right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+3. Send those two zip files to me(Lutieri)
 
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
