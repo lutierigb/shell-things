@@ -2,6 +2,9 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Mar15
+- Increases retransmission alerts threshold so it becomes less annoying. Also add remote control option to temporarily silence the alerts
+
 ## 2025Mar12
 - Resolves bug that could cause profit sharing to crash the EA at the end of the day
 
