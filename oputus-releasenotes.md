@@ -2,6 +2,18 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Apr15
+- Improved Beginning of Day/EA loaded notification
+- New Symbol detection is now fully automated. No need for user input
+
+## 2025Apr14
+- New feature: Exports profits in a way that the Profit Exporter can read
+- fixes a memory leak with the RetransmissionMonitor class
+- adds short to profit sharing
+
+## 2025Mar25
+- fixes a bug, caused by a change in MT, that would cause EOD notification on the weekend
+
 ## 2025Mar15
 - Increases retransmission alerts threshold so it becomes less annoying. Also add remote control option to temporarily silence the alerts
 
