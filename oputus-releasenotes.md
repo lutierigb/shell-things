@@ -2,6 +2,13 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Apr16
+- Adding operations controller which expands Remote Control for both long and short
+
+## 2025Jun11
+- Fixed bug that would fail to notify about balance changes in the account
+- fixed display bug where lot size would show as 1.20000000000003 in the info panel
+
 ## 2025Apr15
 - Improved Beginning of Day/EA loaded notification
 - New Symbol detection is now fully automated. No need for user input
@@ -21,7 +28,7 @@
 - Resolves bug that could cause profit sharing to crash the EA at the end of the day
 
 ## 2025Feb21
-- Resolves an old issue with indicators like RSI and BB which could have them pointing to the wrong indicator. Mostly happened when turning ATF On and Off
+- Resolves an old issue with indicators like RSI and BB which could have them pointing to the wrong indicator handle. Mostly happened when turning ATF On and Off
 
 ## 2025Feb19
 - improving logging. Every single log now includes timestamp(in server time) and log level
