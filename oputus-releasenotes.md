@@ -2,8 +2,18 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
-## 2025Apr16
+## 2025Jun17
+- New feature: Symbol Rotation now transition to the next Bra50XXXYY symbol automatically
+- New feature: ability to stop push notifications via Remote Control
+- tiny improvement on detecting new day and new month. fixes a bug that would detect new month when the EA was first loaded
+- lot size was not being consistenly recalculated at the beggining of the day. this is now fixed
+- make failures during EA loading clear and shows warning when loading long operations with Bra50
+- out of the woods notification wouldn't always trigger. should be fixed now
+
+## 2025Jun16
 - Adding operations controller which expands Remote Control for both long and short
+- fixes tiny bug calculating distance to TP for short
+- removing the flow control feature
 
 ## 2025Jun11
 - Fixed bug that would fail to notify about balance changes in the account
