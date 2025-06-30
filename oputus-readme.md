@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Feb06
+Current version: 2025Jun30
 
 ## Introduction
 
@@ -8,24 +8,9 @@ An EA based on Sistema Manche from investor Douglas Niemeyer. Only used for long
 
 Settting all parameters to their defaults (right-click - Defaults) will make it act like the regular Manche EA where the lot sizes are static and no other fancy features are enabled
 
-## Backtests result
-
-Latest version results stored [here](https://docs.google.com/spreadsheets/d/1ZCH_PCN79vFHZcxhS3TRomz4AK8QZQx4uHJLFYZU7lY)
-
-## How to install/upgrade it
-
-1. In Metatrader go to File - Open Data Folder
-2. Navigate to `MQL5\Experts`
-3. Paste the `.ex5` file
-4. Double click the file you just pasted to open it with Metatrader
-5. Drag and Drop it on a new chart window or same window where the current one is loaded
-6. Confirm you want to replace the old one with the new one
-7. Make sure `Allow Algo Trading` is checked
-8. Under **Inputs** load your .set file
-
 ## Basics
 
-- Parameter `Enable buy operations` when set to **False** allows you to keep the robot running but won't place any new orders.
+- The same EA can operate on long and short positions simultaneously. Each has its own settings.
 
 - Parameter `EA Name` allows you to specify a name for this Expert Advisor/Robot. It will be used when placing orders in the comments field and also when sending push notifications. Useful if you have more than one EA running on the same account but not required.
 
@@ -137,7 +122,22 @@ Upon closing of all opened positions the timeframe will change to the initial ti
 
 Calculates lot size based on the current balance and Investment profile. An investment profile must be selected to use this option. Can be done either daily, Monthly or ASAP. It also calculates the lot sizes used in Gradient Buy, in case the feature is on. 
 
-Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's done to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with a $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it recalculates the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. 
+Note: It will delay calculating lot sizes if there are positions opened until they are closed. That's done to avoid reducing the lot size in case of withdrawals from the account. Example: Suppose you start the day with a $10k balance in the account. Reinvesting is set to Daily. At the end of the trading session on day one there are a few opened positions. You then decide to withdraw $5k from the account. Let's imagine the new balance is now $5k. On the following day, when the session starts if it recalculates the lot sizes based on the balance, the lot size would halve for new buys resulting in less profit or even loss when the positions close. In order to avoid this scenario the EA will wait until the positions are all closed and then recalculate the lot sizes. The same applies for deposits. If you deposit money in the account and there are positions opened, it won't automatically recalculate the lot sizes. 
+
+
+
+If you'd like to force the EA to recalculate the lots, in MT5 go to Tools - Global Variables and delete the following for the list:
+
+```
+Oputus-MagicNumber-XXXX-EffectiveLongLot
+Oputus-MagicNumber-XXXX-GBEffectiveLevelOneLot
+Oputus-MagicNumber-XXXX-GBEffectiveLevelTwoLot
+```
+Where XXXX is the magic number of your EA.
+
+Now reload the EA.
+
+![GV reinvesting](https://github.com/user-attachments/assets/3253e040-7fbe-450e-960f-e6007871ecb9)
 
 Notification note: This feature sends push notifications. See *Notifications* below.
 
@@ -156,25 +156,15 @@ The chart will be reloaded to use the new symbol once the rotation is completed.
 
 Notification note: This feature sends push notifications. See *Notifications* below.
 
-
-### Flow Control
-
-Blocks new orders when equity is below a certain level.
-
-With this feature on, a new buy signal will be ignored if the previous order was placed less than X minutes specified in the parameters `Time-out(in minutes) for new buy orders when FC is on`. A mark will show in the chart where the buy signal was detected but skipped.
-
-To enable this feature, the parameter `Time-out(in minutes) for new buy orders when FC is on` must be greater than zero.
-
-Note: This feature seems to work best with larger lot sizes and it will protect consecutive buys that could otherwise result in high levels of drawdown. Running this feature with an appropriate lot size will simply delay closing positions.
-
 ### Remote Control
 
-Allows to use invalid orders(order wichi will be rejected by the server) to control some aspects of the EA. At the moment there are two commands available. In order to use this feature a Buy at the Market Price order must be placed, of any size, regardless of the Symbol. The Take Profit specified when placing the order will determine which command will be executed.
+Allows to use invalid orders(order wich will be rejected by the server) to control some aspects of the EA. In order to use this feature a Buy at the Market Price order must be placed, of any size, regardless of the Symbol. The Take Profit specified when placing the order will determine which command will be executed.
+
+The commands available might change depending on the version so it's always a good idea to call the help menu to see which commands are available:
 
 |Take Profit Value|Command|
 |--------|--|
-|10|Toggle the ability to place new orders|
-|20|Returns a snapshot of the current configuration|
+|100|Help menu|
 
 A confirmation of the execution and the outcome will be sent to the user via push notification
 
@@ -220,7 +210,7 @@ Note: Checking **Notifications from the local terminal/trade server** will send 
 
 #### New Symbol Detected
 
-If a symbol(case-sensitive) is specified in `Notify when new symbol becomes available`, you will receieve a notification once it becomes available for trading. Useful when running the EA with symbol Bra50 and waiting for the next Bra50XXXYY to become available. Note this feature can not be backtested.
+You will receieve a notification once the next symbol becomes available for trading. This is always enabled and can't be disabled.
 
 #### New MT Version availabe
 
@@ -259,14 +249,7 @@ Selects how the info panel in the chart will be plotted. It can be turned off, i
 
 Specifies the maximum number of comment lines to keep on the chart. The most recent X lines will be kept.
 
-## FAQ
 
-### I've been asked to collect logs. How do I do this?
-
-In Metatrader go to **File** - **Open Data Folder(Ctrl+Shift+D)**.
-1. Right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
-2. Navigate to **MQL5**, right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
-3. Send those two zip files to me(Lutieri)
 
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
