@@ -137,7 +137,7 @@ Where XXXX is the magic number of your EA.
 
 Now reload the EA.
 
-![GV reinvesting](https://github.com/user-attachments/assets/3253e040-7fbe-450e-960f-e6007871ecb9)
+![GV reinvesting](https://i.imgur.com/pX1Nrmz.png)
 
 Notification note: This feature sends push notifications. See *Notifications* below.
 
