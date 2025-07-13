@@ -2,6 +2,17 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Jul10
+- new feature: limits to short positions. The whole limit class has been refactored
+
+## 2025Jul03
+- counting opened and closed positions should now be stable
+
+## 2025Jun30
+- out of the woods count now fixed
+- new feature: remote control can now place new orders
+- two EA in the same account would report the same profit at EOF. this is now fixed
+
 ## 2025Jun17
 - New feature: Symbol Rotation now transition to the next Bra50XXXYY symbol automatically
 - New feature: ability to stop push notifications via Remote Control
