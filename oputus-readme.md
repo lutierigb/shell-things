@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Jun30
+Current version: 2025Jul10
 
 ## Introduction
 
@@ -254,3 +254,23 @@ Specifies the maximum number of comment lines to keep on the chart. The most rec
 ## Remarks
 - A hedging account is assumed for this EA to work appropriately 
 - If you change the average take profit it will be modified on all existing orders in a matter of seconds after the change. There is no need for a new order to be placed for the TP to be recalculated and modified.
+
+## How to install/upgrade it
+
+1. In Metatrader go to File - Open Data Folder
+2. Navigate to `MQL5\Experts`
+3. Paste the `.ex5` file
+4. Double click the file you just pasted to open it with Metatrader
+5. Drag and Drop it on a new chart window or same window where the current one is loaded
+6. Confirm you want to replace the old one with the new one
+7. Make sure `Allow Algo Trading` is checked
+8. Under **Inputs** load your .set file
+
+## FAQ
+
+### I've been asked to collect logs. How do I do this?
+
+In Metatrader go to **File** - **Open Data Folder(Ctrl+Shift+D)**.
+1. Right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+2. Navigate to **MQL5**, right click on the **Logs** folder, **Send To**, **Compressed(zipped) folder**
+3. Send those two zip files to me(Lutieri)
