@@ -7,7 +7,7 @@
 - Persists stop-after-close and emergency stop setting across EA reboots
 - Preserves Stop Loss of positions
 - Ability to split large push notification into parts
-- 
+
 ## 2025Jul10
 - new feature: limits to short positions. The whole limit class has been refactored
 
