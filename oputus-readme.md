@@ -58,7 +58,7 @@ On the current version the profiles have the following settings:
 | Base balance: | $10k |
 |||
 | Basics - Take Profit(in points) used when placing new order| 5 |
-| Basics - Take Profit(in points) when average price is calculated: | 120 |
+| Basics - Take Profit(in points) when average price is calculated: | 100 |
 | Basics - Buy orders size(in contract): | 1 |
 |||
 |Gradient Buy - Level One Trigger: | 7 |
