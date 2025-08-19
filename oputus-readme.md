@@ -150,11 +150,11 @@ Note: I wouldn't personally recommend the use of this feature as the Manche stra
 
 ### Symbol Rotation
 
-EA will switch from the current symbol, assumed to be something like Bra50XXXYY to a new symbol X days before the current symbol expires. It will try to rotate to the new symbol every new day if there are no positions opened. Otherwise it will be postponed until all the positions are closed.
+EA will switch from the current symbol, assumed to be something like Bra50XXXYY to a new symbol X days before the current symbol expires(assuming the new symbol becomes availabe within this window). It will try to rotate to the new symbol as soon as the new symbol becomes available, granted that are no long positions open. Otherwise it will be postponed until all the positions are closed.
 
 The chart will be reloaded to use the new symbol once the rotation is completed. 
 
-Notification note: This feature sends push notifications. See *Notifications* below.
+Notification note: This feature sends push notifications before it attemps the rotation and once it's completed. See *Notifications* below.
 
 ### Remote Control
 
@@ -217,6 +217,10 @@ You will receieve a notification once the next symbol becomes available for trad
 This feature, which if off by default, will send a push notification when the Metatrader live update tool detects and downloads a new version. The notification will be send only once, when a new version is detected.
 
 Note: this feature requires a one-time setup to work. You basically have to open a Command Prompt(as Administrator) and run a single command that will create a symlink(i.e. mklink /d ...). The exact command depends on your installation path so load the EA and check the **Experts** tab for the exact command. Run it and reload the EA. If everything is right now in the Experts tab you should see **MT Version detection: Setup complete!**
+
+#### Opening Gap Info
+
+A nice/funny message on the very first tick of the day that will include the gap and the time the market opened.
 
 ### Advanced Trading
 
