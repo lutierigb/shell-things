@@ -2,11 +2,15 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Aug19
+- adding gap messages notification
+
 ## 2025Aug05
 - Previous month's profit calculation allows for zero balance now
 - Persists stop-after-close and emergency stop setting across EA reboots
 - Preserves Stop Loss of positions
 - Ability to split large push notification into parts
+- Makes initialization errors more visible
 
 ## 2025Jul10
 - new feature: limits to short positions. The whole limit class has been refactored
