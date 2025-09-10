@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Jul10
+Current version: 2025Sep10
 
 ## Introduction
 
@@ -143,7 +143,14 @@ Notification note: This feature sends push notifications. See *Notifications* be
 
 ### Limits
 
-Used to limit the number of open positions at any given time. Value of zero effectively disables this feature. You can limit based on the number of lots, number of open positions or both. Whatever happens first will block further buys.
+Used to limit the number of open positions at any given time. Value of zero effectively disables this feature. You can limit based on the number of lots, number of open positions or both. Whatever happens first will block further orders.
+
+`Minimum distance(in points) from last order`: This feature prevents overtrading by requiring a minimum price distance between consecutive orders of the same type.
+For long positions, new buy orders are only allowed when the current ask price has fallen at least the specified distance below the last long entry price.
+For short positions, new sell orders are only allowed when the current bid price has risen at least the specified distance above the last short entry price. 
+The last entry prices are automatically saved and restored across EA restarts to ensure consistent enforcement of these distance requirements.
+
+If at anytime you set `Minimum distance(in points) from last order` to zero it will disable the feature and delete any last prices from memory. 
 
 Note: I wouldn't personally recommend the use of this feature as the Manche strategy seems to benefit from being allowed to continue to buy during market downfalls.
 
