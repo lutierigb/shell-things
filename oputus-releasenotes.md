@@ -2,8 +2,19 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Sep10
+- only devs care: Refactored NewOrder()
+- new feature: limiting orders based on distance from last
+
+## 2025Sep08
+- Remove debug log from the version detection feature that was spamming the logs
+
 ## 2025Aug19
 - adding gap messages notification
+- symbol rotation now triggers when the new symbol becomes available
+
+##2025Aug18
+- improving the way we handle TP updates to avoid unnecessary calls
 
 ## 2025Aug05
 - Previous month's profit calculation allows for zero balance now
