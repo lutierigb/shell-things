@@ -17,7 +17,7 @@
 - adding gap messages notification
 - symbol rotation now triggers when the new symbol becomes available
 
-##2025Aug18
+## 2025Aug18
 - improving the way we handle TP updates to avoid unnecessary calls
 
 ## 2025Aug05
