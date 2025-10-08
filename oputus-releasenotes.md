@@ -2,6 +2,10 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Sep11
+- only devs care: log remote control commands
+- only devs care: skip saving last entry price when feature is disabled
+
 ## 2025Sep10
 - only devs care: Refactored NewOrder()
 - new feature: limiting orders based on distance from last
