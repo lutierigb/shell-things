@@ -2,6 +2,23 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Nov07
+- skips trading checks on init(known to have instabilites)
+- Ability to choose when to receive Welcome push notification, defaults to 30min. This one does perform trading checks things like is MT connected to the broker
+- fix issue where new month would be triggered later in the month
+
+## 2025Oct23
+- checks if symbol used for shorting is valid
+- send initial trading checks failues via push notification
+- remove comments from the chart. relevant info will just be logged
+
+## 2025Oct20
+- new feature(still in alpha): ability to manually change the timeframe via remote control
+
+## 2025Oct13
+- only devs care: improved day and month detection(again)
+- new feature: notification upon placing very first position(default off)
+
 ## 2025Sep11
 - only devs care: log remote control commands
 - only devs care: skip saving last entry price when feature is disabled
