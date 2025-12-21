@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Sep10
+Current version: 2025Dec22
 
 ## Introduction
 
@@ -140,6 +140,12 @@ Now reload the EA.
 ![GV reinvesting](https://i.imgur.com/pX1Nrmz.png)
 
 Notification note: This feature sends push notifications. See *Notifications* below.
+
+### Protection Settings
+
+A series of usually smalls and simple measures aimed to make this whole strategy safer. This usually affects profit in exchange for protection.
+
+`Use a lower initial TP` controls how the initial take profit is calculated for new positions. When disabled (false), the take profit is based solely on the previous candle's high (for buys) or low (for sells), plus the configured take profit distance. When enabled (true), the system compares this candle-based take profit against a more conservative option calculated from the current market price (ask for buys, bid for sells) plus the standard take profit distance, then selects whichever value is closer to the current price.
 
 ### Limits
 
