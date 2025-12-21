@@ -2,6 +2,15 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2025Dec22
+- Introducing Protection Settings. A series of small tweaks to the strategy to make it safer. Starting with a lower initial TP logic. Details in the docs
+
+## 2025Nov28
+- only devs care: improving bootstrap logic to avoid unnecessary calls/checks when loading the positions in the account
+
+## 2025Nov10
+- counting of open pos on end of day notification would include positions from another EA in the same account. this is now fixed
+
 ## 2025Nov07
 - skips trading checks on init(known to have instabilites)
 - Ability to choose when to receive Welcome push notification, defaults to 30min. This one does perform trading checks things like is MT connected to the broker
@@ -34,7 +43,7 @@
 - adding gap messages notification
 - symbol rotation now triggers when the new symbol becomes available
 
-## 2025Aug18
+##2025Aug18
 - improving the way we handle TP updates to avoid unnecessary calls
 
 ## 2025Aug05
