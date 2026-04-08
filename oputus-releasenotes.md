@@ -2,6 +2,10 @@
 
 ## Installation/upgrades instructions [here](https://github.com/lutierigb/shell-things/blob/main/oputus-readme.md#how-to-installupgrade-it)
 
+## 2026Apr08
+- Adding Avg Price as TP from the beginning(under Advanced Trading). It affects long and short.
+- Added a score for backtesting. Makes it easier to compare two different tests(lower score is better)
+
 ## 2025Dec22
 - Introducing Protection Settings. A series of small tweaks to the strategy to make it safer. Starting with a lower initial TP logic. Details in the docs
 
