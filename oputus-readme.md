@@ -1,6 +1,6 @@
 # oputus-trading-robot
 
-Current version: 2025Dec22
+Current version: 2026Apr08
 
 ## Introduction
 
@@ -43,6 +43,11 @@ On the current version the profiles have the following settings:
 | Basics - Take Profit(in points) when average price is calculated: | 60 |
 | Basics - Buy orders size(in contract): | 0.6 |
 |||
+| Dynamic Take Profit - Enabled: | True |
+| Dynamic Take Profit - Level One: | 60 |
+| Dynamic Take Profit - Level Two: | 300 |
+| Dynamic Take Profit - Moving Average Period(Days): | 9 |
+|||
 |Gradient Buy - Level One Trigger: | 8 |
 | Gradient Buy - Level One Lot Size: | 0.8 |
 | Gradient Buy - Level Two Trigger: | 10 |
@@ -66,6 +71,11 @@ On the current version the profiles have the following settings:
 | Gradient Buy - Level Two Trigger: | 10 |
 | Gradient Buy - Level Two Lot Size: | 1.6 |
 |||
+| Dynamic Take Profit - Enabled: | True |
+| Dynamic Take Profit - Level One: | 100 |
+| Dynamic Take Profit - Level Two: | 400 |
+| Dynamic Take Profit - Moving Average Period(Days): | 9 |
+|||
 | Auto Timeframe - Auto Timeframe enabled: | True |
 | Auto Timeframe - Timeframe to start with: | M3 |
 | Auto Timeframe - Open Positions Threshold: | 1 |
@@ -79,10 +89,15 @@ On the current version the profiles have the following settings:
 | Basics - Take Profit(in points) when average price is calculated: | 120 |
 | Basics - Buy orders size(in contract): | 1.5 |
 |||
-| Dynamic Take Profit - Level One Open buys threshold: | 10 |
-| Dynamic Take Profit - Level One Take Profit: | 200 |
-| Dynamic Take Profit - Level Two Open buys threshold: | 2100 |
-| Dynamic Take Profit - Level Two Take Profit: | 200 |
+| Dynamic Take Profit - Enabled: | True |
+| Dynamic Take Profit - Level One: | 120 |
+| Dynamic Take Profit - Level Two: | 400 |
+| Dynamic Take Profit - Moving Average Period(Days): | 9 |
+|||
+| Gradient Buy - Level One Open buys threshold: | 10 |
+| Gradient Buy - Level One Take Profit: | 200 |
+| Gradient Buy - Level Two Open buys threshold: | 2100 |
+| Gradient Buy - Level Two Take Profit: | 200 |
 |||
 | Auto Timeframe - Auto Timeframe enabled: | True |
 | Auto Timeframe - Timeframe to start with: | M3 |
@@ -99,8 +114,6 @@ When enabled it will check current price to determine whether it should use `Lev
 This feature is opportunistic and will only use a higher TP (`Level Two Take Profit`) if the price is still climbing compared to the previous day's low. All backtests concluded it does not increase the Equity Drawdown Maximum(DD) further than previous seen levels. Neither it increases the occurrences of DD's greater than 15%. It should be fairly safe to use and should result in bigger profits.
 
 A moving average can also be used to only allow `Level Two Take Profit` to be applied when the current price is above the average. Default to 9 days for the MA period.
-
-Note: This feature is NOT currently part of any investing profiles.
 
 ### Gradient Buys
 
